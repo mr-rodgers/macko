@@ -32,32 +32,25 @@ SystemJS.config({
     "github:*/*.json"
   ],
   map: {
+    "@macko/plugin-websockets": "npm:@macko/plugin-websockets@0.1.0",
     "assert": "npm:jspm-nodelibs-assert@0.2.1",
     "buffer": "npm:jspm-nodelibs-buffer@0.2.3",
     "constants": "npm:jspm-nodelibs-constants@0.2.1",
     "crypto": "npm:jspm-nodelibs-crypto@0.2.1",
     "events": "npm:jspm-nodelibs-events@0.2.2",
     "fs": "npm:jspm-nodelibs-fs@0.2.1",
-    "macko-websockets": "github:te-je/macko-websockets@master",
     "net": "npm:jspm-nodelibs-net@0.2.1",
     "os": "npm:jspm-nodelibs-os@0.2.1",
     "path": "npm:jspm-nodelibs-path@0.2.3",
     "process": "npm:jspm-nodelibs-process@0.2.1",
     "stream": "npm:jspm-nodelibs-stream@0.2.1",
     "string_decoder": "npm:jspm-nodelibs-string_decoder@0.2.1",
-    "te-je/macko-websockets": "github:te-je/macko-websockets@master",
     "tls": "npm:jspm-nodelibs-tls@0.2.1",
     "url": "npm:jspm-nodelibs-url@0.2.1",
     "util": "npm:jspm-nodelibs-util@0.2.2",
     "vm": "npm:jspm-nodelibs-vm@0.2.1"
   },
   packages: {
-    "github:te-je/macko-websockets@master": {
-      "map": {
-        "nodejs-websocket": "npm:nodejs-websocket@1.7.1",
-        "macko-plugin-helpers": "github:te-je/macko-plugin-helpers@0.0.2"
-      }
-    },
     "npm:jspm-nodelibs-crypto@0.2.1": {
       "map": {
         "crypto-browserify": "npm:crypto-browserify@3.11.0"
@@ -281,6 +274,11 @@ SystemJS.config({
         "hash.js": "npm:hash.js@1.0.3",
         "minimalistic-assert": "npm:minimalistic-assert@1.0.0",
         "minimalistic-crypto-utils": "npm:minimalistic-crypto-utils@1.0.1"
+      }
+    },
+    "npm:@macko/plugin-websockets@0.1.0": {
+      "map": {
+        "nodejs-websocket": "npm:nodejs-websocket@1.7.1"
       }
     }
   }
