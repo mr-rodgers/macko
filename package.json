@@ -4,6 +4,9 @@
   "description": "A simple websocket watcher",
   "main": "main.js",
   "scripts": {
+    "build": "tsc -p . --pretty",
+    "prestart": "npm run build",
+    "watch": "concurrently --kill-others \"tsc --watch --pretty -p .\" \"npm run start\"",
     "start": "electron ."
   },
   "repository": "https://github.com/te-je/macko",
@@ -17,6 +20,8 @@
   "author": "Te-je Rodgers",
   "license": "MIT",
   "devDependencies": {
-    "electron": "~1.6.2"
+    "concurrently": "^3.4.0",
+    "electron": "~1.6.2",
+    "typescript": "^2.3.2"
   }
 }
