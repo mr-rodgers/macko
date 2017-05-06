@@ -1,0 +1,22 @@
+{
+  "name": "@macko/macko",
+  "version": "0.1.0",
+  "description": "A simple websocket watcher",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/te-je/macko",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "author": "Te-je Rodgers",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "~1.6.2"
+  }
+}
