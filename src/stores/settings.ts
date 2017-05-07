@@ -1,17 +1,11 @@
 import { computed, observable } from "mobx";
 
-interface IJSONSerializableObj {
-    [index: string]: JSONSerializable;
-}
-
-type JSONSerializable = IJSONSerializableObj | string | number | Array<(IJSONSerializableObj | string | number)>;
-
 const protocolHandlerKey = "last-used-protocol-handler";
 
 export class SettingsStore {
     @observable private lastEditTime = 0;
 
-    public setItem(key: string, item: JSONSerializable): void {
+    public setItem(key: string, item: any): void {
         window.localStorage.setItem(key, JSON.stringify(item));
         this.lastEditTime = Date.now();
     }
