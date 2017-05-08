@@ -3,7 +3,7 @@
     "name": "@macko/plugin-env",
     "main": "@macko/plugin-env.js",
     "dependencies": {
-      "@macko/plugin-websockets": "npm:@macko/plugin-websockets@^0.1.0"
+      "@macko/plugin-websockets": "npm:@macko/plugin-websockets@^0.1.1"
     },
     "devDependencies": {
       "plugin-babel": "npm:systemjs-plugin-babel@^0.0.21"
@@ -33,5 +33,11 @@
         ]
       }
     }
+  },
+  "dependencies": {
+    "react-router-dom": "^4.1.1"
+  },
+  "devDependencies": {
+    "@types/react-router-dom": "^4.0.4"
   }
-}
+}

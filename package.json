@@ -5,6 +5,7 @@
   "main": "main.js",
   "scripts": {
     "build": "tsc -p . --pretty",
+    "dist": "build",
     "prestart": "npm run build",
     "watch": "concurrently --kill-others \"tsc --watch --pretty -p .\" \"npm run start\"",
     "start": "electron ."
@@ -20,13 +21,35 @@
   "author": "Te-je Rodgers",
   "license": "MIT",
   "devDependencies": {
+    "@types/history": "^4.5.1",
+    "@types/material-ui": "^0.17.6",
     "@types/node": "^7.0.18",
+    "@types/react": "^15.0.24",
+    "@types/react-dom": "^15.5.0",
+    "@types/react-router": "^4.0.8",
+    "@types/react-router-dom": "^4.0.4",
+    "@types/react-tap-event-plugin": "0.0.30",
+    "@types/uuid": "^2.0.29",
     "concurrently": "^3.4.0",
     "electron": "~1.6.2",
     "typescript": "^2.3.2"
   },
   "dependencies": {
+    "history": "^4.6.1",
+    "material-ui": "^0.18.0",
     "mobx": "^3.1.9",
-    "plugin-hooker": "^0.2.1"
+    "mobx-react": "^4.1.8",
+    "mobx-react-router": "^4.0.1",
+    "plugin-hooker": "^0.2.1",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-router": "^4.1.1",
+    "react-router-dom": "^4.1.1",
+    "react-tap-event-plugin": "^2.0.1",
+    "uuid": "^3.0.1",
+    "zenscroll": "^4.0.0"
+  },
+  "build": {
+    "appId": "macko.app"
   }
 }

@@ -32,7 +32,7 @@ SystemJS.config({
     "github:*/*.json"
   ],
   map: {
-    "@macko/plugin-websockets": "npm:@macko/plugin-websockets@0.1.0",
+    "@macko/plugin-websockets": "npm:@macko/plugin-websockets@0.1.1",
     "assert": "npm:jspm-nodelibs-assert@0.2.1",
     "buffer": "npm:jspm-nodelibs-buffer@0.2.3",
     "constants": "npm:jspm-nodelibs-constants@0.2.1",
@@ -276,7 +276,7 @@ SystemJS.config({
         "minimalistic-crypto-utils": "npm:minimalistic-crypto-utils@1.0.1"
       }
     },
-    "npm:@macko/plugin-websockets@0.1.0": {
+    "npm:@macko/plugin-websockets@0.1.1": {
       "map": {
         "nodejs-websocket": "npm:nodejs-websocket@1.7.1"
       }

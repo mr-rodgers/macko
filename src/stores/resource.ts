@@ -1,4 +1,6 @@
 import { computed, observable } from "mobx";
+import * as url from "url";
+
 import { IProtocolHandler, IResourceWatcher } from "./plugins";
 import { SettingsStore } from "./settings";
 
@@ -12,11 +14,11 @@ interface IExtraMessageData {
     mime?: string;
 }
 
-export class Resource {
+export class ResourceStore {
     @observable public url?: string;
     @observable public handler?: IProtocolHandler;
     @observable private messages: IMessage[] = [];
-    private messageEmitter?: IResourceWatcher;
+    @observable private messageEmitter?: IResourceWatcher;
 
     constructor(private settings: SettingsStore) { }
 
@@ -39,6 +41,7 @@ export class Resource {
         }
 
         this.loadMessagesFromCache();
+        this.messages = [];
 
         const emitter = this.messageEmitter = handler.watch(url);
         emitter.on("message", (text: string, extraData?: IExtraMessageData) => {
@@ -62,11 +65,13 @@ export class Resource {
         if (this.messageEmitter) {
             this.messageEmitter.removeAllListeners();
             this.messageEmitter.close();
+            this.messageEmitter = undefined;
         }
     }
 
     private storeMessagesInCache() {
-        this.settings.setItem(this.cacheKey, this.messages);
+        const messages = this.messages.filter((msg) => msg.type !== "error");
+        this.settings.setItem(this.cacheKey, messages);
     }
 
     private loadMessagesFromCache() {
@@ -75,11 +80,37 @@ export class Resource {
 
     @computed
     public get received() {
-        return this.messages.filter((msg) => msg.type === "received");
+        return this.messages.filter((msg) => msg.type === "received" || msg.type === "error");
     }
 
+    @computed
     public get isListening() {
         return (this.messageEmitter !== undefined);
+    }
+
+    @computed
+    public get ready(): boolean {
+        const handler = this.handler;
+        const urlText = this.url;
+
+        if (!handler || !urlText) {
+            return false;
+        }
+
+        const urlParts = url.parse(urlText);
+        return !!urlParts.hostname;
+    }
+
+    @computed
+    public get error(): string | undefined {
+        if (this.messages.length === 0) {
+            return;
+        }
+        const message = this.messages[this.messages.length - 1];
+        if (message.type !== "error") {
+            return;
+        }
+        return message.text;
     }
 
     private get cacheKey() {

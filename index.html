@@ -2,15 +2,21 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Hello World!</title>
+    <title>Macko</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600|PT+Mono" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+      html, body, #root { height: 100%; padding: 0; margin: 0}
+      body {font-family: "Open Sans", sans-serif; }
+      #root {display: flex; flex-direction: column; align-items: stretch}
+      .smooth-scroll {scroll-behavior: smooth}
+    </style>
   </head>
   <body>
-    <h1>Hello World!</h1>
-    <!-- All of the Node.js APIs are available in this renderer process. -->
-    We are using Node.js <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
+    <div id="root"></div>
   </body>
 
-  <script></script>
+  <script>
+    require("./dist/macko.js");
+  </script>
 </html>

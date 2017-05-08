@@ -1,5 +1,5 @@
+import { observable } from "mobx";
 import {
-    Extension,
     isLoaded,
     LoadedExtension,
     PluginHooker,
@@ -47,11 +47,11 @@ export type ErrorListener = (error: Error) => void;
 
 export type Implementation<T> = T & { __macko_impl_id__: string };
 
-const protocolHandlerHook = "macko:plugins:protocol-handlers";
+const protocolHandlerHook = "macko:hooks:protocol-handler";
 
 export class PluginStore {
+    @observable public protocolHandlers: Array<Implementation<IProtocolHandler>> = [];
     private hooker: PluginHooker;
-    private protocolHandlers: Array<Implementation<IProtocolHandler>> = [];
 
     constructor(folder: string) {
         this.hooker = new PluginHooker(new JspmBackend(folder));
