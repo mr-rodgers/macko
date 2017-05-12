@@ -1,0 +1,56 @@
+@import "custom";
+@import "~bootstrap/scss/bootstrap";
+@import "buttons";
+
+html, body, #root {
+    height: 100%;
+    margin: 0;
+    position: relative;
+    padding: 0;
+}
+
+#root {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.landing {
+    flex: 1;
+    display: flex;
+    flex-flow: column nowrap;
+
+    > .landing-hero {
+        display: flex;
+        flex: 1;
+        flex-flow: row wrap;
+        justify-content: center;
+
+        > .landing-text {
+            align-self: center;
+            flex: 0 1 480px;
+            margin: 20px;
+
+            > .lead {
+                font-family: Raleway, sans-serif;
+                font-size: 1.5rem;
+                font-weight: 300;
+            }
+        }
+
+        > .screenshot {
+            align-self: stretch;
+            flex: 1 1 480px;
+            max-width: 560px;
+            min-height: 600px;
+        }
+
+        @media only screen and (min-width: 480px) {
+            padding: 0 30px;
+        }
+    }
+
+    > .navbar {
+        max-width: 1080px;
+        margin: 20px 0;
+    }
+}

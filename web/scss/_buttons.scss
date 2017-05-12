@@ -1,0 +1,3 @@
+.btn-outline-inverse {
+    @include button-outline-variant($btn-inverse-bg, $btn-inverse-color);
+}
