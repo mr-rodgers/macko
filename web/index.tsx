@@ -21,7 +21,7 @@ ReactDOM.render(
     <Provider {...stores}>
         <Router>
             <Switch>
-                <Route exact path="/" component={Landing}/>
+                <Route component={Landing}/>
             </Switch>
         </Router>
     </Provider>,
