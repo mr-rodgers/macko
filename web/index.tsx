@@ -10,6 +10,7 @@ import {
   Switch,
 } from "react-router-dom";
 
+import Documentation from "./components/Documentation";
 import Landing from "./components/Landing";
 import { ReleasesStore } from "./stores/releases";
 
@@ -19,9 +20,10 @@ const stores = {
 
 ReactDOM.render(
     <Provider {...stores}>
-        <Router>
+        <Router basename="/macko">
             <Switch>
-                <Route component={Landing}/>
+                <Route exact path="/" component={Landing}/>
+                <Route path="/docs" component={Documentation} />
             </Switch>
         </Router>
     </Provider>,

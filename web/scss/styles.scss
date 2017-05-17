@@ -1,6 +1,7 @@
 @import "custom";
 @import "~bootstrap/scss/bootstrap";
 @import "buttons";
+@import "loader";
 
 html, body, #root {
     height: 100%;
@@ -49,8 +50,44 @@ html, body, #root {
         }
     }
 
-    > .navbar {
-        max-width: 1080px;
-        margin: 20px 0;
+    > .nav-wrapper {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+
+        > .navbar {
+            flex: 0 1 1110px;
+        }
+    }
+}
+
+.docs {
+    .doc-nav {
+        font-weight: bold;        
+        h2 { font-weight: bold; font-family: "Open Sans", sans-serif; font-size: 1.1rem; }
+    }
+
+    .document {
+        position: relative;
+        .loader {
+            margin: 0;
+            transform: scale(0.5);
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+    }
+}
+
+.navbar {
+    margin: 2rem 0;
+
+    .nav-link {
+        padding-left: 2rem !important;
+        padding-right: 2rem !important;
     }
 }

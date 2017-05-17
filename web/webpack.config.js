@@ -26,11 +26,18 @@ module.exports = {
     },
     output: {
         filename: "bundle.js",
-        path: path.join(__dirname, "dist")
+        path: path.join(__dirname, "dist"),
+        publicPath: "/macko"
     },
 
     // Enable sourcemaps for debugging webpack's output.
     devtool: "source-map",
+
+    devServer: {
+        historyApiFallback: {
+            index: '/macko/'
+        }
+    },
 
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.

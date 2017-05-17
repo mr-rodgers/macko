@@ -17,6 +17,7 @@ interface IDownloadGroupProps {
     size?: "lg" | "sm" | "md";
     outline?: boolean;
     color?: any;
+    compact?: boolean;
 }
 
 interface IDownloadGroupState {
@@ -31,10 +32,10 @@ const buttonLabels = {
 };
 
 const shortButtonLabels = {
-    OSX: "OS X",
-    linux: "Linux",
-    tar: "Source",
-    win32: "Windows",
+    OSX: "Download",
+    linux: "Download",
+    tar: "Download",
+    win32: "Download",
 };
 
 @inject("releases")
@@ -60,15 +61,19 @@ export default class DownloadGroup
             return null;
         }
 
+        const labels = this.props.compact ? shortButtonLabels : buttonLabels;
+        const titles = buttonLabels;
+
         const downloads = this.downloadList;
         const button = (
             <Button tag="a" href={downloads[0].url}
                     size={this.props.size}
-                    color={this.props.color}>
-                {buttonLabels[downloads[0].platform]}
+                    color={this.props.color}
+                    title={titles[downloads[0].platform]}>
+                {labels[downloads[0].platform]}
             </Button>
         );
-        if (downloads.length === 1) {
+        if (downloads.length === 1 || this.props.compact) {
             return button;
         }
 

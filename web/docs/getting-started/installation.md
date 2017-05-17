@@ -18,7 +18,7 @@ Linux users can still build and run Macko the source package.
 
 ## Mac
 
-There's no official build for OS X. Have a look at  
+There's no official build for OS X. Have a look at 
 [issue #9](https://github.com/te-je/macko/issues/9) for more details. 
 
 As with on Linux, Macko can be built from the source package on Mac.
