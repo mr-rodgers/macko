@@ -1,4 +1,4 @@
-[{src,web}/**/*{.ts,.tsx}]
+[{src,web,__mock__,__tests__}/**/*{.ts,.tsx}]
 indent_style = space
 indent_size = 4
 charset = utf-8
