@@ -1,9 +1,9 @@
 import { PluginStore } from "../__mocks__/plugins";
 import { MockListener } from "../__mocks__/resource-listener";
-import { ResourceListenerStore } from "../resource-listener";
+import { IResourceListenerStore, ResourceListenerStore } from "../resource-listener";
 
 let pluginStore: PluginStore;
-let rls: ResourceListenerStore;
+let rls: IResourceListenerStore;
 
 const listeners = {
     eventSource: new MockListener("EventSource", ["http:", "https:"]),

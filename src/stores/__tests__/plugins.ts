@@ -2,7 +2,6 @@
 import MockBackend from "../../../__mocks__/plugin-hooker/backend";
 jest.mock("plugin-hooker/backends", () => ({Jspm: MockBackend}));
 
-import { Jspm as JspmBackend } from "plugin-hooker/backends";
 import MockPackage from "../../../__mocks__/plugin-hooker/package";
 import { PluginStore } from "../plugins";
 
