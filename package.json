@@ -91,6 +91,7 @@
     ],
     "coverageReporters": [
       "html"
-    ]
+    ],
+    "mapCoverage": true
   }
 }
