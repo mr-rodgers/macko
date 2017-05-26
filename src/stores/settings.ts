@@ -1,18 +1,45 @@
-import { computed, observable } from "mobx";
+import { observable } from "mobx";
 
-const protocolHandlerKey = "last-used-protocol-handler";
+const lastModifiedKey = "__last_modified__";
 
-export class SettingsStore {
-    @observable private lastEditTime = 0;
+export interface ISettings {
+    /** A date/time when the settings were last changed. */
+    readonly modified: Date | null;
+
+    /**
+     * Set a value
+     */
+    setItem(key: string, item: any): void;
+
+    /**
+     * Get a typed value
+     */
+    getItem<T>(key: string): T | null;
+
+    /**
+     * Delete a value
+     */
+    removeItem(key: string): void;
+}
+
+export class Settings implements ISettings {
+    @observable public modified: Date | null;
+
+    constructor() {
+        const lastM = this.getItem<number>(lastModifiedKey);
+        this.modified = lastM === null
+            ? null
+            : new Date(lastM);
+    }
 
     public setItem(key: string, item: any): void {
         window.localStorage.setItem(key, JSON.stringify(item));
-        this.lastEditTime = Date.now();
+        if (key !== lastModifiedKey) {
+            this.modify();
+        }
     }
 
     public getItem<T>(key: string): T | null {
-        // tslint:disable-next-line:no-unused-expression
-        this.lastEditTime; // Trick mobx into thinking we need this
         const val: string | null = window.localStorage.getItem(key);
         return val === null
             ? null
@@ -21,19 +48,11 @@ export class SettingsStore {
 
     public removeItem(key: string) {
         window.localStorage.removeItem(key);
-        this.lastEditTime = Date.now();
+        this.modify();
     }
 
-    @computed
-    public get handlerID(): string | null {
-        return this.getItem<string>(protocolHandlerKey);
-    }
-
-    public set handlerID(val: string | null) {
-        if (val !== null) {
-            this.setItem(protocolHandlerKey, val);
-        } else {
-            this.removeItem(protocolHandlerKey);
-        }
+    private modify() {
+        this.modified = new Date();
+        this.setItem(lastModifiedKey, this.modified.valueOf());
     }
 }
